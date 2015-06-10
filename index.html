@@ -299,6 +299,7 @@ html .ui-alt-icon .ui-radio-off:after {
 $(document).ready(function () {
     var $val;
     var floor;
+    var for = ['base', 'First', 'Second', 'Third', 'Fourth'];
     var side;
     var or;
     var numR = [];
@@ -348,7 +349,7 @@ $(document).ready(function () {
 
         for (y in cam) {
             if (y == side) {
-                $('#dir').html("It's by " + cam[y]);
+                $('#dir').html("It's by " + cam[y] + ". On the " + for[floor] + " floor.");
             }
         }
 
