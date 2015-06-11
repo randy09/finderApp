@@ -290,47 +290,142 @@ $(document).ready(function () {
     var or;
     var numR = [];
     var odds = {
-        0: 'B',
-        1: 'A - O',
-        2: 'O - Z',
-        3: 'Z - O',
-        4: 'M - O',
-        5: 'N',
-        6: 'M'
+        0: { // DONE
+            1: 'B',
+            3: 'B',
+            5: 'A - B',
+            7: 'B',
+            9: 'A - B'
+            
+        },
+        1: { // DONE
+            1: 'A',
+            3: 'A',
+            5: 'A',
+            7: 'A',
+            9: 'A - O'
+         },
+        2: { // DONE
+            1: 'O - A',
+            3: 'O',
+            5: 'O',
+            7: 'O',
+            9: 'O' 
+         },
+        3: { // DONE
+            1: 'Z - O',
+            3: 'Z',
+            5: 'Z',
+            7: 'Z - O',
+            9: 'O'
+        },
+        4: { //DONE
+            1: 'O',
+            3: 'O',
+            5: 'M - O',
+            7: 'M - O',
+            9: 'M'
+        },
+        5: {
+            1: 'M',
+            3: 'N',
+            5: 'N',
+            7: 'M',
+            9: 'N' 
+        },
+        6: {
+            1: 'M - N'
+           }
     };
     var even = {
-        0: 'C',
-        1: 'D - H',
-        2: 'Z - H',
-        3: 'H - Z',
-        4: 'J - H',
-        5: 'I - J',
+        0: {
+            0: 'C - B',
+            2: 'C - B',
+            4: 'C',
+            6: 'C',
+            8: 'C - D'
+           },
+        1: {
+            0: 'D',
+            2: 'D',
+            4: 'G',
+            6: 'G',
+            8: 'G'
+           },
+        2: {
+            0: 'G - H',
+            2: 'H',
+            4: 'H - Z',
+            6: 'H - Z',
+            8: 'H - Z'
+           },
+        3: {
+            0: 'Z',
+            2: 'Z',
+            4: 'H',
+            6: 'H',
+            8: 'H - J'
+           },
+        4: {
+            0: 'H',
+            2: 'H - J',
+            4: 'H - J',
+            6: 'J - H',
+            8: 'J'
+           },
+        5: {
+            0: 'J',
+            2: 'J',
+            4: 'J - I',
+            6: 'J - I',
+            8: 'I'
+           },
+        6: {
+            0: 'I',
+            2: 'I'
+        }
     };
+
     $('a').click(function () {
         $val = $('#roomNum').val()
         var numR = [];
         for (n = 0; n < $val.length; n++) {
             numR[n] = $val[n];
         }
+
         oddOrEven(numR);
     });
+
     function oddOrEven(rm) {
+
         floor = rm[0];
         side = rm[1];
         or = rm[2];
         if (or % 2 == 0) {
             locate(even);
+
         } else {
             locate(odds);
+
         }
     }
+
     function locate(cam) {
+
         for (y in cam) {
             if (y == side) {
-                $('#dir').html("It's by " + cam[y]);
-            }
+                for( b in cam[y]){
+                    if(b == or){
+                $('#dir').html("It's by " + cam[y][b]);
+                    }
+                }}
         }
+
+
     }
+
+
+
 })
 //]]>  
 </script>
